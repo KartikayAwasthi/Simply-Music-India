@@ -147,26 +147,29 @@ Mumbai, Maharashtra - 400053
         </h3>
 
         {/* Clickable Map */}
-        <div
-          className="relative w-full h-[400px] rounded-2xl overflow-hidden border border-accent/30 shadow-[0_0_50px_rgba(249,200,14,0.1)] cursor-pointer"
-          onClick={() =>
-            window.open(
-              "https://www.google.com/maps/place/Janki+Centre/@19.1323012,72.8341047,19z/data=!3m1!5s0x3be7b623b477a7ef:0x517d727799516b2!4m14!1m7!3m6!1s0x3be7b71e718160cf:0x761686140bcd50f4!2sJanki+Centre!8m2!3d19.1322999!4d72.8347484!16s%2Fg%2F11j9cf3cjf!3m5!1s0x3be7b71e718160cf:0x761686140bcd50f4!8m2!3d19.1322999!4d72.8347484!16s%2Fg%2F11j9cf3cjf?entry=ttu&g_ep=EgoyMDI1MTAxMy4wIKXMDSoASAFQAw%3D%3D",
-              "_blank"
-            )
-          }
-        >
-          <iframe
-            title="Simply Music Studio Location"
-            src="https://www.google.com/maps/place/Andheri+Industrial+Estate+Mumbai/@19.1323041,72.8325832,17z/data=!3m1!5s0x3be7c71367ddad41:0xfdec8d5ff2a26495!4m14!1m7!3m6!1s0x3be7b71e718160cf:0x761686140bcd50f4!2sJanki+Centre!8m2!3d19.1322999!4d72.8347484!16s%2Fg%2F11j9cf3cjf!3m5!1s0x3be7b6241b63f163:0x89311658f60a37ae!8m2!3d19.132877!4d72.835446!16s%2Fg%2F1tj7tvrd?entry=ttu&g_ep=EgoyMDI1MTAxMy4wIKXMDSoASAFQAw%3D%3D"
-            className="absolute inset-0 w-full h-full"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+       {/* Clickable Map */}
+<div
+  className="relative w-full h-[400px] rounded-2xl overflow-hidden border border-accent/30 shadow-[0_0_50px_rgba(249,200,14,0.1)] cursor-pointer"
+  onClick={() =>
+    window.open(
+      "https://www.google.com/maps/place/Janki+Centre,+Off+Veera+Desai+Rd,+Andheri+West,+Mumbai,+Maharashtra+400053",
+      "_blank"
+    )
+  }
+>
+  <iframe
+    title="Simply Music Studio Location"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.4378849295364!2d72.8347484!3d19.1322999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b71e718160cf%3A0x761686140bcd50f4!2sJanki%20Centre!5e0!3m2!1sen!2sin!4v1697990045715!5m2!1sen!2sin"
+    className="absolute inset-0 w-full h-full"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
 
-          <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all duration-300"></div>
-        </div>
+  <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all duration-300"></div>
+</div>
+
       </div>
 
       {/* Accent Line Bottom */}
