@@ -31,7 +31,7 @@ export default function Footer() {
 >
   <div className="flex items-center gap-4">
     <img
-      src="/logo/SimplyMusic.webp"
+      src="/logo/logo.png"
       alt="Simply Music India Logo"
       className="w-20 h-20 md:w-16 md:h-16 object-contain"
     />

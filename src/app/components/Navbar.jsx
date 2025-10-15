@@ -39,7 +39,7 @@ export default function Navbar() {
           className="flex items-center gap-2 cursor-pointer select-none"
         >
           <img
-            src="/logo/SimplyMusic.webp"
+            src="/logo/logo.png"
             alt="Simply Music Logo"
             className="w-20 h-20 md:w-12 md:h-12 object-contain"
           />

@@ -18,8 +18,8 @@ export default function ProjectsShowcase() {
     { id: 4, title: "Rhythm Reborn", desc: "Revival of classical tabla & synth in a fusion single.", video: "/media/rhythm-reborn.mp4", ratio: "9/16" },
     { id: 5, title: "Ishq Da Nakhra", desc: "Music video post-production with cinematic sound layering.", video: "/media/ishq-da-nakhra.mp4", ratio: "16/9" },
     { id: 6, title: "Paaya Maine Khudko", desc: "Neo-soul inspired track blending vintage vinyl tones and analog synths.", video: "/media/paaya-maine-khud-ko.mp4", ratio: "16/9" },
-    { id: 7, title: "Golden Strings", desc: "Live violin session recording for a heritage documentary.", video: "/media/golden-strings.mp4", ratio: "16/9" },
-    { id: 8, title: "Electric Voyage", desc: "Electronic journey through retro synths and modern beats.", video: "/media/electric-voyage.mp4", ratio: "16/9" },
+    { id: 7, title: "Hyundai’s Rakshabandhan ad film", desc: "where emotions came alive through music.", video: "/media/Hyundai.mp4", ratio: "16/9" },
+    { id: 8, title: "From nostalgia to notes", desc: "Simply Music India created the BGM for Navneet Digest’s film, capturing the essence of learning and memories.", video: "/media/nostalgia.mp4", ratio: "16/9" },
   ];
 
   // 🎬 GSAP Animations
