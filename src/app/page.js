@@ -4,6 +4,7 @@ import Team from "./components/Team";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Gallery from "./components/Gallery";
+import About from "./components/About";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Team />
       <Projects />
       <Gallery />
+      <About /> 
       <Contact />
     </main>
   );
