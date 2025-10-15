@@ -12,12 +12,12 @@ export default function ProjectsShowcase() {
   const [playingId, setPlayingId] = useState(null);
 
   const projects = [
-    { id: 1, title: "Symphony Nights", desc: "Live orchestral recording and mixdown for the Mumbai Symphony.", video: "/media/jackline.mp4", ratio: "9/16" },
-    { id: 2, title: "Urban Pulse", desc: "Hip-hop meets ambient: soundtrack design for street art documentary.", video: "/media/sid.mp4", ratio: "9/16" },
-    { id: 3, title: "Echoes of Time", desc: "Minimalist piano & synth experiment for an indie short film.", video: "/media/echoes-of-time.mp4", ratio: "9/16" },
+    { id: 1, title: "Jab Chhaye | Hai Junoon!", desc: "is a high-energy track featuring Jacqueline Fernandez, sung by Kanika Kapoor. Get ready to vibe and dance.", video: "/media/jackline.mp4", ratio: "9/16" },
+    { id: 2, title: "FAASLE (Music Video)", desc: "sung by Garvit-Priyansh, composed by Sid Paul and written by Rishi Pathak. Feat. Pyaarinari and Tara Prasad.", video: "/media/sid.mp4", ratio: "9/16" },
+    { id: 3, title: "Do Epic Shit", desc: "Minimalist piano & synth experiment for an indie short film.", video: "/media/do-epic-shit.mp4", ratio: "9/16" },
     { id: 4, title: "Rhythm Reborn", desc: "Revival of classical tabla & synth in a fusion single.", video: "/media/rhythm-reborn.mp4", ratio: "9/16" },
-    { id: 5, title: "Skyline Dreams", desc: "Music video post-production with cinematic sound layering.", video: "/media/skyline-dreams.mp4", ratio: "16/9" },
-    { id: 6, title: "Velvet Beats", desc: "Neo-soul inspired track blending vintage vinyl tones and analog synths.", video: "/media/velvet-beats.mp4", ratio: "16/9" },
+    { id: 5, title: "Ishq Da Nakhra", desc: "Music video post-production with cinematic sound layering.", video: "/media/ishq-da-nakhra.mp4", ratio: "16/9" },
+    { id: 6, title: "Paaya Maine Khudko", desc: "Neo-soul inspired track blending vintage vinyl tones and analog synths.", video: "/media/paaya-maine-khud-ko.mp4", ratio: "16/9" },
     { id: 7, title: "Golden Strings", desc: "Live violin session recording for a heritage documentary.", video: "/media/golden-strings.mp4", ratio: "16/9" },
     { id: 8, title: "Electric Voyage", desc: "Electronic journey through retro synths and modern beats.", video: "/media/electric-voyage.mp4", ratio: "16/9" },
   ];
@@ -61,15 +61,34 @@ export default function ProjectsShowcase() {
       </motion.h2>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-6 md:px-16 pb-20">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            isPlaying={playingId === project.id}
-            onClick={() => handleVideoClick(project.id)}
-          />
-        ))}
+      <div className="space-y-20 px-6 md:px-16 pb-20">
+        {/* 9:16 Videos (Portrait Layout) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 justify-items-center">
+          {projects
+            .filter((p) => p.ratio === "9/16")
+            .map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                isPlaying={playingId === project.id}
+                onClick={() => handleVideoClick(project.id)}
+              />
+            ))}
+        </div>
+
+        {/* 16:9 Videos (2x2 Cinematic Layout) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:grid-cols-2 justify-items-center">
+          {projects
+            .filter((p) => p.ratio === "16/9")
+            .map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                isPlaying={playingId === project.id}
+                onClick={() => handleVideoClick(project.id)}
+              />
+            ))}
+        </div>
       </div>
     </section>
   );
@@ -80,20 +99,33 @@ function ProjectCard({ project, isPlaying, onClick }) {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
 
-  // Handle Play/Pause
+  // 🔓 Unlock Audio Context After First Click (Browser Policy Fix)
+  useEffect(() => {
+    const unlockAudio = () => {
+      document.querySelectorAll("video").forEach((v) => {
+        v.muted = false;
+      });
+      console.log("🔊 Audio context unlocked!");
+      window.removeEventListener("click", unlockAudio);
+    };
+    window.addEventListener("click", unlockAudio);
+    return () => window.removeEventListener("click", unlockAudio);
+  }, []);
+
+  // ▶️ Handle Play/Pause
   useEffect(() => {
     if (!videoRef.current) return;
     if (isPlaying) {
       document.querySelectorAll("video").forEach((v) => {
         if (v !== videoRef.current) v.pause();
       });
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch((err) => console.warn("Playback blocked:", err));
     } else {
       videoRef.current.pause();
     }
   }, [isPlaying]);
 
-  // Auto Pause when Offscreen
+  // ⏸️ Auto Pause When Offscreen
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -110,24 +142,28 @@ function ProjectCard({ project, isPlaying, onClick }) {
     return () => observer.disconnect();
   }, [isPlaying]);
 
-  // Mute Toggle
+  // 🔇 Toggle Mute/Unmute
   const toggleMute = (e) => {
     e.stopPropagation();
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+      videoRef.current.play().catch(() => {});
     }
   };
+
+  // 📐 Adjust Size Based on Ratio
+  const cardStyle =
+    project.ratio === "9/16"
+      ? { aspectRatio: "9/16", maxWidth: "350px" }
+      : { aspectRatio: "16/9", width: "100%", height: "auto" };
 
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 120 }}
-      className="project-card relative bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl overflow-hidden cursor-pointer group w-full mx-auto"
-      style={{
-        aspectRatio: project.ratio,
-        maxWidth: project.ratio === "9/16" ? "350px" : "100%",
-      }}
+      className="project-card relative bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl overflow-hidden cursor-pointer group w-full"
+      style={cardStyle}
       onClick={onClick}
     >
       {/* 🎥 Video */}
@@ -138,6 +174,10 @@ function ProjectCard({ project, isPlaying, onClick }) {
         loop
         playsInline
         preload="metadata"
+        onClick={(e) => {
+          e.stopPropagation();
+          videoRef.current.play().catch(() => {});
+        }}
         className="w-full h-full object-cover transition-all duration-700"
       />
 

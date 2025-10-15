@@ -41,12 +41,12 @@ export default function Navbar() {
           <img
             src="/logo/SimplyMusic.webp"
             alt="Simply Music Logo"
-            className="w-10 h-10 md:w-12 md:h-12 object-contain"
+            className="w-20 h-20 md:w-12 md:h-12 object-contain"
           />
         </div>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex gap-8 text-[15px] font-medium tracking-wide text-black/70">
+        <ul className="hidden md:flex gap-8 text-[15px] font-bold tracking-wide text-black/70">
           {links.map((link) => (
             <li
               key={link}

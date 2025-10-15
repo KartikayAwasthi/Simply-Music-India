@@ -22,14 +22,14 @@ export default function Gallery() {
     "/gallery/Faasle.jpg",
     "/gallery/Ghar-Set-hai.jpg",
     "/gallery/Music-Album.jpg",
-    "/gallery/Short-Film.jpg",
-    "/gallery/Live-Concert.jpg",
-    "/gallery/Studio-Session.jpg",
-    "/gallery/Promo-Shoot.jpg",
-    "/gallery/Documentary.jpg",
-    "/gallery/BTS.jpg",
-    "/gallery/Recording-Day.jpg",
-    "/gallery/Cinematic-Shot.jpg",
+    "/gallery/Lily.jpg",
+    "/gallery/Lost-&-Found.jpg",
+    "/gallery/Main-Aur-Tum.jpg",
+    "/gallery/Please-Find-Attached.jpg",
+    "/gallery/Salesman-of-the-year.jpg",
+    "/gallery/The-Girl-On-The-Highway.jpg",
+    "/gallery/Tujhpe-Main-Fida-2.jpg",
+    "/gallery/Zindagi-Thak-Gyi.jpg",
   ];
 
   // 🎢 GSAP Parallax Scroll Effect
