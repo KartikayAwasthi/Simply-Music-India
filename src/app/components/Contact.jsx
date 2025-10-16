@@ -132,7 +132,7 @@ Mumbai, Maharashtra - 400053
 
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-accent/20 text-accent border border-accent/50 rounded-full py-3 text-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300"
+            className="w-full flex items-center justify-center gap-2 bg-accent/20 text-accent border border-accent/50 rounded-full py-3 text-lg font-semibold hover:bg-accent hover:text-green-400 transition-all duration-300"
           >
             <Send size={20} />
             {submitted ? "Message Sent ✅" : "Send Message"}
