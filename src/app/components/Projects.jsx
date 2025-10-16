@@ -11,16 +11,72 @@ export default function ProjectsShowcase() {
   const sectionRef = useRef(null);
   const [playingId, setPlayingId] = useState(null);
 
-  const projects = [
-    { id: 1, title: "Jab Chhaye | Hai Junoon!", desc: "is a high-energy track featuring Jacqueline Fernandez, sung by Kanika Kapoor. Get ready to vibe and dance.", video: "/media/jackline.mp4", ratio: "9/16" },
-    { id: 2, title: "FAASLE (Music Video)", desc: "sung by Garvit-Priyansh, composed by Sid Paul and written by Rishi Pathak. Feat. Pyaarinari and Tara Prasad.", video: "/media/sid.mp4", ratio: "9/16" },
-    { id: 3, title: "Do Epic Shit", desc: "Minimalist piano & synth experiment for an indie short film.", video: "/media/do-epic-shit.mp4", ratio: "9/16" },
-    { id: 4, title: "Rhythm Reborn", desc: "Revival of classical tabla & synth in a fusion single.", video: "/media/rhythm-reborn.mp4", ratio: "9/16" },
-    { id: 5, title: "Ishq Da Nakhra", desc: "Music video post-production with cinematic sound layering.", video: "/media/ishq-da-nakhra.mp4", ratio: "16/9" },
-    { id: 6, title: "Paaya Maine Khudko", desc: "Neo-soul inspired track blending vintage vinyl tones and analog synths.", video: "/media/paaya-maine-khud-ko.mp4", ratio: "16/9" },
-    { id: 7, title: "Hyundai’s Rakshabandhan ad film", desc: "where emotions came alive through music.", video: "/media/Hyundai.mp4", ratio: "16/9" },
-    { id: 8, title: "From nostalgia to notes", desc: "Simply Music India created the BGM for Navneet Digest’s film, capturing the essence of learning and memories.", video: "/media/nostalgia.mp4", ratio: "16/9" },
-  ];
+ const projects = [
+  { 
+    id: 1, 
+    title: "Jab Chhaye | Hai Junoon!", 
+    desc: "is a high-energy track featuring Jacqueline Fernandez, sung by Kanika Kapoor. Get ready to vibe and dance.", 
+    video: "/media/jackline.mp4", 
+    thumbnail: "/thumbnails/jackline.png", // 👈 Add thumbnail
+    ratio: "9/16" 
+  },
+  { 
+    id: 2, 
+    title: "FAASLE (Music Video)", 
+    desc: "sung by Garvit-Priyansh, composed by Sid Paul and written by Rishi Pathak. Feat. Pyaarinari and Tara Prasad.", 
+    video: "/media/sid.mp4", 
+    thumbnail: "/thumbnails/faasle.png", 
+    ratio: "9/16" 
+  },
+  { 
+    id: 3, 
+    title: "Do Epic Shit", 
+    desc: "Minimalist piano & synth experiment for an indie short film.", 
+    video: "/media/do-epic-shit.mp4", 
+    thumbnail: "/thumbnails/do-epic-shit.png", 
+    ratio: "9/16" 
+  },
+  { 
+    id: 4, 
+    title: "Rhythm Reborn", 
+    desc: "Revival of classical tabla & synth in a fusion single.", 
+    video: "/media/rhythm-reborn.mp4", 
+    thumbnail: "/thumbnails/rhythm-reborn.jpg", 
+    ratio: "9/16" 
+  },
+  { 
+    id: 5, 
+    title: "Ishq Da Nakhra", 
+    desc: "Music video post-production with cinematic sound layering.", 
+    video: "/media/ishq-da-nakhra.mp4", 
+    thumbnail: "/thumbnails/ishq-da-nakhra.png", 
+    ratio: "16/9" 
+  },
+  { 
+    id: 6, 
+    title: "Paaya Maine Khudko", 
+    desc: "Neo-soul inspired track blending vintage vinyl tones and analog synths.", 
+    video: "/media/paaya-maine-khud-ko.mp4", 
+    thumbnail: "/thumbnails/paaya-maine-khud-ko.png", 
+    ratio: "16/9" 
+  },
+  { 
+    id: 7, 
+    title: "Hyundai’s Rakshabandhan ad film", 
+    desc: "where emotions came alive through music.", 
+    video: "/media/Hyundai.mp4", 
+    thumbnail: "/thumbnails/hyundai.png", 
+    ratio: "16/9" 
+  },
+  { 
+    id: 8, 
+    title: "From nostalgia to notes", 
+    desc: "Simply Music India created the BGM for Navneet Digest’s film, capturing the essence of learning and memories.", 
+    video: "/media/nostalgia.mp4", 
+    thumbnail: "/thumbnails/nostalgia.png", 
+    ratio: "16/9" 
+  },
+];
 
   // 🎬 GSAP Animations
   useEffect(() => {
@@ -170,6 +226,7 @@ function ProjectCard({ project, isPlaying, onClick }) {
       <video
         ref={videoRef}
         src={project.video}
+        poster={project.thumbnail}
         muted={isMuted}
         loop
         playsInline
