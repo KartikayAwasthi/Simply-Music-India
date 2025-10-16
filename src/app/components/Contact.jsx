@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +10,8 @@ export default function ContactUs() {
   const sectionRef = useRef(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,18 +27,38 @@ export default function ContactUs() {
         },
       });
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setErrorMsg(data.error || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setErrorMsg("An unexpected error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -71,8 +93,7 @@ export default function ContactUs() {
             </p>
             <p className="flex items-center gap-3">
               <MapPin size={24} className="text-accent" /> 14, Ground Floor, Janki Center,
-Off Veera Desai Road, Andheri West,
-Mumbai, Maharashtra - 400053
+              Off Veera Desai Road, Andheri West, Mumbai, Maharashtra - 400053
             </p>
           </div>
         </div>
@@ -130,12 +151,28 @@ Mumbai, Maharashtra - 400053
             ></textarea>
           </div>
 
+          {errorMsg && (
+            <p className="text-red-500 text-sm mb-4">{errorMsg}</p>
+          )}
+
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-accent/20 text-accent border border-accent/50 rounded-full py-3 text-lg font-semibold hover:bg-accent hover:text-green-400 transition-all duration-300"
+            disabled={loading}
+            className="w-full flex items-center justify-center gap-2 bg-accent/20 text-accent border border-accent/50 rounded-full py-3 text-lg font-semibold hover:bg-accent hover:text-green-400 transition-all duration-300 disabled:opacity-50"
           >
-            <Send size={20} />
-            {submitted ? "Message Sent ✅" : "Send Message"}
+            {loading ? (
+              <>
+                <Loader2 size={20} className="animate-spin" /> Sending...
+              </>
+            ) : submitted ? (
+              <>
+                <Send size={20} /> Message Sent ✅
+              </>
+            ) : (
+              <>
+                <Send size={20} /> Send Message
+              </>
+            )}
           </button>
         </form>
       </div>
@@ -146,33 +183,28 @@ Mumbai, Maharashtra - 400053
           Visit Us
         </h3>
 
-        {/* Clickable Map */}
-       {/* Clickable Map */}
-<div
-  className="relative w-full h-[400px] rounded-2xl overflow-hidden border border-accent/30 shadow-[0_0_50px_rgba(249,200,14,0.1)] cursor-pointer"
-  onClick={() =>
-    window.open(
-      "https://www.google.com/maps/place/Janki+Centre,+Off+Veera+Desai+Rd,+Andheri+West,+Mumbai,+Maharashtra+400053",
-      "_blank"
-    )
-  }
->
-  <iframe
-    title="Simply Music Studio Location"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.4378849295364!2d72.8347484!3d19.1322999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b71e718160cf%3A0x761686140bcd50f4!2sJanki%20Centre!5e0!3m2!1sen!2sin!4v1697990045715!5m2!1sen!2sin"
-    className="absolute inset-0 w-full h-full"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-
-  <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all duration-300"></div>
-</div>
-
+        <div
+          className="relative w-full h-[400px] rounded-2xl overflow-hidden border border-accent/30 shadow-[0_0_50px_rgba(249,200,14,0.1)] cursor-pointer"
+          onClick={() =>
+            window.open(
+              "https://www.google.com/maps/place/Janki+Centre,+Off+Veera+Desai+Rd,+Andheri+West,+Mumbai,+Maharashtra+400053",
+              "_blank"
+            )
+          }
+        >
+          <iframe
+            title="Simply Music Studio Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.4378849295364!2d72.8347484!3d19.1322999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b71e718160cf%3A0x761686140bcd50f4!2sJanki%20Centre!5e0!3m2!1sen!2sin!4v1697990045715!5m2!1sen!2sin"
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all duration-300"></div>
+        </div>
       </div>
 
-      {/* Accent Line Bottom */}
       <div className="absolute bottom-0 left-0 w-full h-[2px] bg-accent/30 blur-[1px]" />
     </section>
   );
