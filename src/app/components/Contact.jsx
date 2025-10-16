@@ -143,7 +143,7 @@ Mumbai, Maharashtra - 400053
       {/* Google Map Embed */}
       <div className="mt-24 max-w-6xl mx-auto contact-card">
         <h3 className="text-3xl font-bold text-accent mb-6 text-center md:text-left">
-          Visit Our Studio
+          Visit Us
         </h3>
 
         {/* Clickable Map */}

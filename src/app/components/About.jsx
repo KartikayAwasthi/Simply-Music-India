@@ -7,7 +7,7 @@ export default function About() {
       id="about"
       className="min-h-screen w-full bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-20 gap-12 md:gap-20 overflow-hidden font-sans"
     >
-      {/* 🔹 Right Side on Desktop — Appears First on Mobile */}
+      {/* 🔹 Right Side (Image) */}
       <motion.div
         initial={{ opacity: 0, x: 60 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -25,7 +25,7 @@ export default function About() {
         {/* Subtle Glow */}
         <div className="absolute bottom-0 w-[400px] h-[400px] bg-white/10 blur-[200px] rounded-full opacity-20 -z-10" />
 
-        {/* 🔹 Signature & Position (for mobile only) */}
+        {/* Signature (for mobile only) */}
         <div className="flex flex-col items-center text-center mt-6 md:hidden">
           <p className="text-5xl italic text-red-600 font-[Dancing Script]">Rishi</p>
           <p className="text-gray-400 text-sm font-semibold tracking-wider mt-2">
@@ -34,13 +34,14 @@ export default function About() {
         </div>
       </motion.div>
 
-      {/* 🔹 Left Side — Text Section */}
+      {/* 🔹 Left Side (Text Section) */}
       <motion.div
         initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="w-full md:w-1/2 text-gray-300 leading-relaxed tracking-wide space-y-6 pl-0 md:pl-[50px] order-2 md:order-1"
+        // ⬇️ Increased left padding from 50px → 100px for desktop
+        className="w-full md:w-1/2 text-gray-300 leading-relaxed tracking-wide space-y-6 pl-4 sm:pl-8 md:pl-[100px] order-2 md:order-1"
       >
         {/* Heading */}
         <h2 className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent font-[Poppins]">
@@ -73,7 +74,7 @@ export default function About() {
           Because for us, it’s simple: if it matters to you, it matters to us.
         </p>
 
-        {/* Signature for Desktop Only */}
+        {/* Signature (for desktop only) */}
         <div className="pt-6 hidden md:block">
           <p className="text-5xl italic text-red-600 font-[Dancing Script]">Rishi</p>
           <p className="text-gray-400 text-sm font-semibold tracking-wider mt-2">

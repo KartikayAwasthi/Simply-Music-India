@@ -2,6 +2,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ChatBot from "./components/ChatBot";
 
 export const metadata = {
   title: "SimplyMusic India",
@@ -16,6 +18,8 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <ChatBot />
+        <WhatsAppButton />
       </body>
     </html>
   );

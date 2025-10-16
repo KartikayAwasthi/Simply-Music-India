@@ -10,7 +10,7 @@ export default function Gallery() {
   const sectionRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // 🖼️ Gallery Images (18 total)
+  // 🖼️ Gallery Images
   const images = [
     "/gallery/Aisa-Waisa-Pyaar.jpg",
     "/gallery/Chand-jesa-yaar.jpg",
@@ -39,7 +39,6 @@ export default function Gallery() {
 
     imageContainers.forEach((container) => {
       const img = container.querySelector("img");
-
       gsap.fromTo(
         img,
         { y: gsap.utils.random(-60, 60) },
@@ -57,7 +56,7 @@ export default function Gallery() {
     });
   }, []);
 
-  // ❌ Close image viewer on ESC key
+  // ❌ Close image viewer on ESC
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setSelectedImage(null);
@@ -90,21 +89,20 @@ export default function Gallery() {
       </motion.h2>
 
       {/* 🖼️ Grid of Images */}
-      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-20 z-10">
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-20 z-10 items-start">
         {images.map((src, i) => (
           <motion.div
             key={i}
-            className="gallery-item relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-[0_0_25px_rgba(255,255,255,0.05)] group cursor-pointer"
+            className="gallery-item relative inline-block overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-[0_0_25px_rgba(255,255,255,0.05)] group cursor-pointer"
             whileHover={{ scale: 1.04 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            style={{ aspectRatio: "4 / 3" }}
+            transition={{ type: 'spring', stiffness: 200 }}
             onClick={() => setSelectedImage(src)}
           >
             <img
               src={src}
               alt={`Gallery Work ${i + 1}`}
               loading="lazy"
-              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 brightness-90 group-hover:brightness-100"
+              className="block w-full h-auto object-cover transition-all duration-700 group-hover:scale-110 brightness-90 group-hover:brightness-100"
             />
 
             {/* Overlay Text */}

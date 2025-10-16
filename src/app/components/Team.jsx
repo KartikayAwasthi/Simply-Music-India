@@ -13,7 +13,7 @@ export default function Team() {
   const teamMembers = [
     { name: "Rishi", role: "Founder", img: "/team/Rishi.jpg" },
     { name: "Samrat", role: "Music Composer", img: "/team/dada.jpg" },
-    { name: "Sid", role: "Music Composer", img: "/team/sid.jpeg" },
+    { name: "Sid", role: "Music Composer", img: "/team/sid.jpg" },
     { name: "Rahul", role: "Lyricist", img: "/team/Rahul.jpg" },
     { name: "Divakar", role: "Lyricist", img: "/team/divakar.jpg" },
     { name: "Khush", role: "Music Producer", img: "/team/Khush.jpg" },
