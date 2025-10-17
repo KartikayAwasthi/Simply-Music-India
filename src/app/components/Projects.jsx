@@ -38,10 +38,10 @@ export default function ProjectsShowcase() {
   },
   { 
     id: 4, 
-    title: "Rhythm Reborn", 
-    desc: "Revival of classical tabla & synth in a fusion single.", 
-    video: "/media/rhythm-reborn.mp4", 
-    thumbnail: "/thumbnails/rhythm-reborn.jpg", 
+    title: "Saawariya- Rishabh Shah | Junaid Ahmed | Rishi Pathak", 
+    desc: "Saawariya is a heartfelt wedding song from the bride's perspective, expressing her pure love and emotions as she marries her beloved.", 
+    video: "/media/Saawariya.mp4", 
+    thumbnail: "/thumbnails/Saawariya.png", 
     ratio: "9/16" 
   },
   { 
