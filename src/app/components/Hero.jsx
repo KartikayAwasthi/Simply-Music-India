@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, Suspense } from "react";
 import { gsap } from "gsap";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import {
   useGLTF,
   Html,
@@ -28,7 +28,13 @@ function Loader() {
 // ---------- 3D Model ----------
 function DeskModel() {
   const { scene } = useGLTF("/models/Desk.glb");
-  return <primitive object={scene} scale={1.2} position={[0.3, -0.8, 0]} />;
+  const { size } = useThree();
+
+  // Responsive positioning fix — center the model on mobile
+  const isMobile = size.width < 768;
+  const position = isMobile ? [0, -0.8, 0] : [0.3, -0.8, 0];
+
+  return <primitive object={scene} scale={1.2} position={position} />;
 }
 
 // ---------- Hero Component ----------
@@ -53,7 +59,7 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full flex flex-col md:flex-row items-center justify-center bg-primary overflow-hidden">
-      {/* ---------- Left Side Text (Desktop 25%, Mobile Full Width) ---------- */}
+      {/* ---------- Left Side Text (25%) ---------- */}
       <div className="w-full md:w-[25%] flex flex-col justify-center items-start text-center md:text-left px-6 sm:px-10 md:px-12 lg:px-16 z-10">
         <h1
           ref={titleRef}
@@ -69,7 +75,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* ---------- Right Side 3D Model (Desktop 75%, Mobile Centered) ---------- */}
+      {/* ---------- Right Side 3D Model (75%) ---------- */}
       <div className="w-full md:w-[75%] flex justify-center items-center h-[45vh] sm:h-[55vh] md:h-full mt-8 md:mt-0">
         <Canvas
           camera={{ position: [0, 1.5, 3.8], fov: 45 }}
@@ -92,15 +98,15 @@ export default function Hero() {
             <DeskModel />
           </Suspense>
 
-          {/* Orbit Controls (Manual Only) */}
+          {/* Orbit Controls — Limited ±45° horizontally & vertically */}
           <OrbitControls
             enableZoom={false}
             enablePan={false}
             autoRotate={false}
-            minAzimuthAngle={-Math.PI}
-            maxAzimuthAngle={Math.PI}
-            minPolarAngle={Math.PI / 2 - Math.PI / 8}
-            maxPolarAngle={Math.PI / 2 + Math.PI / 8}
+            minAzimuthAngle={-Math.PI / 4} // -45°
+            maxAzimuthAngle={Math.PI / 4} // +45°
+            minPolarAngle={Math.PI / 2 - Math.PI / 8} // -45° up
+            maxPolarAngle={Math.PI / 2 + Math.PI / 8} // +45° down
           />
         </Canvas>
       </div>
