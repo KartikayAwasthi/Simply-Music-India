@@ -116,21 +116,20 @@ export default function Hero() {
 
       {/* ---------- Scroll Down Indicator ---------- */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{
-          duration: 1.8,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400"
-      >
-        <ChevronDown size={32} className="text-accent mb-1" />
-        <span className="text-sm uppercase tracking-widest text-gray-400">
-          Scroll to explore
-        </span>
-      </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: [0, 10, 0] }}
+  transition={{
+    duration: 1.8,
+    repeat: Infinity,
+    repeatType: "loop",
+    ease: "easeInOut",
+  }}
+  className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-200 z-50"
+>
+  <ChevronDown size={30} className="text-accent mb-1" />
+  <span className="text-sm uppercase tracking-widest">Scroll to explore</span>
+</motion.div>
+
     </section>
   );
 }
