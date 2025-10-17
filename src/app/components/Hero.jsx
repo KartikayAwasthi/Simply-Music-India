@@ -58,14 +58,14 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full flex flex-col md:flex-row items-center justify-center bg-primary overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col md:flex-row items-center justify-center bg-black overflow-hidden">
       {/* ---------- Left Side Text (25%) ---------- */}
       <div className="w-full md:w-[25%] flex flex-col justify-center items-start text-center md:text-left px-6 sm:px-10 md:px-12 lg:px-16 z-10">
         <h1
           ref={titleRef}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-accent leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight"
         >
-          SimplyMusic India
+          Simply Music India
         </h1>
         <p
           ref={subtitleRef}
