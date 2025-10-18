@@ -3,6 +3,7 @@
 
 @import "tailwindcss";
 
+/* 🌗 Root Colors & Theme Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -13,7 +14,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-moon : "Pacifico", "cursive";
+  --font-moon: "Pacifico", "cursive";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,12 +24,35 @@
   }
 }
 
+/* 🌍 Global Body Styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Poppins', Arial, Helvetica, sans-serif;
+
+  /* ✅ Lenis required adjustments */
+  overflow: hidden; /* Lenis manages scrolling internally */
+  overscroll-behavior: none; /* prevents scroll bouncing on mobile */
 }
 
+/* ✅ Ensure Lenis container styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* 🌈 Custom Scrollbar (works even with Lenis virtual scroll) */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -39,5 +63,3 @@ body {
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
-
-

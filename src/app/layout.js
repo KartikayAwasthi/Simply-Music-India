@@ -1,9 +1,9 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import SmoothScroll from "./components/SmoothScroll";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ChatBot from "./components/ChatBot";
+import LenisWrapper from "./components/LenisWrapper"; // ✅ new client wrapper
 
 export const metadata = {
   title: "SimplyMusic India",
@@ -13,13 +13,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <SmoothScroll />
-        <Navbar />
-        {children}
-        <Footer />
-        <ChatBot />
-        <WhatsAppButton />
+      <body className="overflow-hidden bg-black text-white">
+        <LenisWrapper>
+          <Navbar />
+          {children}
+          <Footer />
+          <ChatBot />
+          <WhatsAppButton />
+        </LenisWrapper>
       </body>
     </html>
   );
