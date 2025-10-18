@@ -9,15 +9,24 @@ export default function Navbar() {
 
   const links = ["home", "services", "team", "projects", "contact"];
 
-  // Scroll state
+  // 🔹 Scroll state
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Smooth scroll to section
+  // 🔹 Smooth scroll to section
   const handleClick = (link) => {
+    // ✅ If "home", scroll to top
+    if (link === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActive("home");
+      setMenuOpen(false);
+      return;
+    }
+
+    // ✅ Otherwise, scroll to target section
     const section = document.querySelector(`#${link}`);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -26,7 +35,7 @@ export default function Navbar() {
     }
   };
 
-  // Scroll to top when logo clicked
+  // 🔹 Scroll to top when logo clicked
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setActive("home");
@@ -44,7 +53,7 @@ export default function Navbar() {
       }`}
     >
       <div className="flex items-center justify-between px-4 md:px-6 py-1.5 md:py-2.5">
-        {/* Logo */}
+        {/* 🔸 Logo */}
         <div
           onClick={scrollToTop}
           className="flex items-center gap-2 cursor-pointer select-none"
@@ -56,7 +65,7 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Desktop Links */}
+        {/* 🔸 Desktop Links */}
         <ul className="hidden md:flex gap-8 text-[15px] font-bold tracking-wide text-black/70">
           {links.map((link) => (
             <li
@@ -80,7 +89,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
+        {/* 🔸 Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-black/80 hover:text-black transition"
@@ -89,7 +98,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* 🔸 Mobile Menu Drawer */}
       <div
         className={`absolute left-0 top-full w-full rounded-3xl overflow-hidden transition-all duration-500 ease-in-out shadow-[0_10px_25px_rgba(0,0,0,0.1)]
         ${
