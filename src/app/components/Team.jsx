@@ -8,7 +8,7 @@ export default function Team() {
   const teamMembers = [
     {
       name: "Rishi",
-      role: "Founder",
+      role: "Founder & CEO",
       img: "/team/Rishi.jpg",
       description: `Founder of Simply Music India, Rishi is the driving force behind the label’s creative and strategic direction. 
       He started the journey with a vision to bridge classical and modern sounds, uniting diverse artists under one platform.`,
@@ -58,6 +58,13 @@ export default function Team() {
       img: "/team/Aditya.jpg",
       description: `Aditya’s fresh perspective and modern production style give Simply Music a contemporary edge.`,
     },
+    {
+      name: "Animesh",
+      role: "Music Composer",
+      img: "/team/Animesh.jpg",
+      description:
+        "Animesh is a visionary music producer creating soulful, modern, and immersive soundscapes.",
+    },
   ];
 
   return (
@@ -66,26 +73,26 @@ export default function Team() {
       className="relative min-h-screen bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white py-20"
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-accent mb-12 tracking-wide">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-accent mb-16 tracking-wide">
           Our Creative Team
         </h2>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 place-items-center">
+        {/* 3×3 Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 place-items-center">
           {teamMembers.map((member, index) => (
             <div
               key={index}
               onClick={() => setSelectedMember(member)}
               className="flex flex-col items-center text-center cursor-pointer group hover:scale-105 transition-transform duration-500"
             >
-              <div className="w-48 h-48 sm:w-52 sm:h-52 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-accent shadow-[0_0_40px_rgba(249,200,14,0.3)]">
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-accent shadow-[0_0_35px_rgba(249,200,14,0.3)]">
                 <img
                   src={member.img}
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              <h3 className="mt-4 text-xl sm:text-2xl md:text-3xl font-semibold">
+              <h3 className="mt-4 text-lg sm:text-xl md:text-2xl font-semibold">
                 {member.name}
               </h3>
               <p className="text-accent uppercase tracking-widest mt-2 text-xs sm:text-sm md:text-base">
