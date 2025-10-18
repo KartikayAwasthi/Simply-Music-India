@@ -158,12 +158,12 @@ export default function Footer() {
 
           <div className="relative" ref={popupRef}>
             <p className="text-gray-500">
-              Designed & Developed by{" "}
+              Designed & Developed by  ❤️ {" "}
               <span
                 onClick={() => setShowPopup(!showPopup)}
-                className="text-black font-semibold hover:text-gray-800 transition-colors cursor-pointer"
+                className="text-black font-semibold hover:text-gray-800 transition-colors cursor-pointer underline"
               >
-                ❤️ Kartikay Awasthi
+               Kartikay Awasthi
               </span>
             </p>
 
