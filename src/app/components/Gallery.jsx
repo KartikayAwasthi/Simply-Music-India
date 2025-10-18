@@ -21,7 +21,7 @@ export default function Gallery() {
     "/gallery/Tujhpe-Main-Fida-2.jpg",
     "/gallery/Faasle.jpg",
     "/gallery/Ghar-Set-hai.jpg",
-    "/gallery/Music-Album.jpg",
+    "/gallery/papa-ki-picture.jpg",
     "/gallery/Lily.jpg",
     "/gallery/Lost-&-Found.jpg",
     "/gallery/The-Girl-On-The-Highway.jpg",

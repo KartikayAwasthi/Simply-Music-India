@@ -59,21 +59,75 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full flex flex-col md:flex-row items-center justify-center bg-black overflow-hidden">
-      {/* ---------- Left Side Text (25%) ---------- */}
-      <div className="w-full md:w-[25%] flex flex-col justify-center items-start text-center md:text-left px-6 sm:px-10 md:px-12 lg:px-16 z-10">
-        <h1
-          ref={titleRef}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight"
-        >
-          Simply Music India
-        </h1>
-        <p
-          ref={subtitleRef}
-          className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-md mx-auto md:mx-0 leading-relaxed"
-        >
-          We craft soulful sound experiences — from beats to brands.
-        </p>
-      </div>
+     {/* ---------- Left Side Text (25%) ---------- */}
+<div className="w-full md:w-[25%] flex flex-col justify-center items-start text-center md:text-left px-6 sm:px-10 md:px-12 lg:px-16 z-10 relative">
+  {/* Animated Glow Behind Text */}
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: [0.3, 0.6, 0.3] }}
+    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    className="absolute inset-0 bg-gradient-to-br from-white/10 via-gray-800/20 to-transparent blur-3xl opacity-30"
+  />
+
+  {/* Title */}
+  <motion.h1
+    ref={titleRef}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1.2, ease: "easeOut" }}
+    className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tight"
+  >
+    <span className="relative inline-block">
+      Simply Music India
+      {/* Underline accent that animates in */}
+      <motion.span
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+        className="absolute left-0 -bottom-2 h-[3px] bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600 rounded-full"
+      />
+    </span>
+  </motion.h1>
+
+  {/* Subtitle */}
+  <motion.p
+    ref={subtitleRef}
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+    className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-md mx-auto md:mx-0 leading-relaxed"
+  >
+    We craft{" "}
+    <span className="text-white font-semibold underline decoration-gray-500/40 underline-offset-4">
+      soulful sound experiences
+    </span>{" "}
+    — from beats to brands.
+  </motion.p>
+
+  {/* Creative Accent Divider */}
+  <motion.div
+    initial={{ scaleX: 0 }}
+    animate={{ scaleX: 1 }}
+    transition={{ duration: 1, delay: 1 }}
+    className="mt-6 h-[1px] w-24 bg-gradient-to-r from-gray-500 to-transparent origin-left"
+  />
+
+  {/* Subtle CTA Buttons (Minimalistic) */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+    className="flex gap-4 mt-8 mx-auto md:mx-0"
+  >
+    <button className="px-6 py-3 rounded-full bg-white/10 text-white font-semibold backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 transform hover:scale-105">
+      Explore
+    </button>
+    <button className="px-6 py-3 rounded-full border border-gray-500 text-gray-300 hover:text-white hover:border-white transition-all duration-300">
+      Our Work
+    </button>
+  </motion.div>
+</div>
+
 
       {/* ---------- Right Side 3D Model (75%) ---------- */}
       <div className="w-full md:w-[75%] flex justify-center items-center h-[45vh] sm:h-[55vh] md:h-full mt-8 md:mt-0">
