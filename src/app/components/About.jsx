@@ -74,12 +74,12 @@ export default function About() {
           className="flex flex-col items-start mt-6"
         >
           <img
-            src="/Sign.png"
+            src="/Sign1.png"
             alt="Rishi Signature"
             className="w-24 sm:w-28 md:w-32 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]"
           />
           <p className="text-gray-400 text-sm font-semibold tracking-wider mt-2">
-            <span className="font-semibold text-white">Rishi Pathak</span>, Founder of Simply Music India
+            <span className="font-semibold text-white">Rishi Pathak</span> <br/> Founder of Simply Music India
           </p>
         </motion.div>
       </motion.div>
