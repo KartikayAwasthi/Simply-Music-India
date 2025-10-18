@@ -24,14 +24,6 @@ export default function About() {
 
         {/* Subtle Glow */}
         <div className="absolute bottom-0 w-[400px] h-[400px] bg-white/10 blur-[200px] rounded-full opacity-20 -z-10" />
-
-        {/* Signature (for mobile only) */}
-        <div className="flex flex-col items-center text-center mt-6 md:hidden">
-          <p className="text-5xl italic text-red-600 font-[Dancing Script]">Rishi</p>
-          <p className="text-gray-400 text-sm font-semibold tracking-wider mt-2">
-            <span className="font-semibold text-white">Rishi Pathak</span>, Founder of Simply Music India
-          </p>
-        </div>
       </motion.div>
 
       {/* 🔹 Left Side (Text Section) */}
@@ -40,12 +32,11 @@ export default function About() {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        // ⬇️ Increased left padding from 50px → 100px for desktop
         className="w-full md:w-1/2 text-gray-300 leading-relaxed tracking-wide space-y-6 pl-4 sm:pl-8 md:pl-[100px] order-2 md:order-1"
       >
         {/* Heading */}
         <h2 className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent font-[Poppins]">
-          Hello, <br /> Rishi here!
+          Hello, 
         </h2>
 
         {/* Paragraphs */}
@@ -74,13 +65,23 @@ export default function About() {
           Because for us, it’s simple: if it matters to you, it matters to us.
         </p>
 
-        {/* Signature (for desktop only) */}
-        <div className="pt-6 hidden md:block">
-          <p className="text-5xl italic text-red-600 font-[Dancing Script]">Rishi</p>
+        {/* ✍️ Signature (placed naturally below text) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="flex flex-col items-start mt-6"
+        >
+          <img
+            src="/Sign.png"
+            alt="Rishi Signature"
+            className="w-24 sm:w-28 md:w-32 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]"
+          />
           <p className="text-gray-400 text-sm font-semibold tracking-wider mt-2">
             <span className="font-semibold text-white">Rishi Pathak</span>, Founder of Simply Music India
           </p>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
